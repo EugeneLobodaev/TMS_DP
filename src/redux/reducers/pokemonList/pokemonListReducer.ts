@@ -5,13 +5,14 @@ import {
   ACTION_NAME_SET_LIST_REQUEST_RESULT,
 } from "./pokemonListActions";
 import {
+  PokemonCategoryItem,
   PokemonListResult,
   PokemonProfileItem,
   ReduxAction,
 } from "../../../types/itemList";
 
 export interface PokemonListReducer {
-  pokemonsList: PokemonProfileItem[];
+  pokemonsList:PokemonProfileItem[];
   pokemonsListRequestResult?: PokemonListResult;
   pokemonsListLoading: boolean;
   pokemonsListError: string | null;

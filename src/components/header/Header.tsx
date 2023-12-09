@@ -3,9 +3,8 @@ import { ButtonHeader } from "../shared/buttons";
 import buttons_header from "../shared/buttons/Buttons.module.css";
 import header from "./Header.module.css";
 import { Input } from "../shared/input/Input";
-import { actionGenerator } from "../../redux/helpers/actionCreator";
+import { actionCreator } from "../../redux/helpers/actionCreator";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchPokemonList } from "../../api/pokemonList";
 
 export const Header = () => {
   const dispatch = useDispatch();
@@ -24,32 +23,32 @@ export const Header = () => {
       <ButtonHeader
         name={"Button 1"}
         className={buttons_header.buttons_header}
-        onClick={""}
+        onClick={() => console.log(5)}
       />
       <ButtonHeader
         name={"Button 2"}
         className={buttons_header.buttons_header}
-        onClick={""}
+        onClick={() => console.log(5)}
       />
       <ButtonHeader
         name={"Button 3"}
         className={buttons_header.buttons_header}
-        onClick={""}
+        onClick={() => console.log(5)}
       />
       <ButtonHeader
         name={"Button 4"}
         className={buttons_header.buttons_header}
-        onClick={""}
+        onClick={() => console.log(5)}
       />
       <ButtonHeader
         name={"Button 5"}
         className={buttons_header.buttons_header}
-        onClick={""}
+        onClick={{}}
       />
       <ButtonHeader
         name={"Button 6"}
         className={buttons_header.buttons_header}
-        onClick={() => dispatch(actionGenerator(addCash, 5))}
+        onClick={() => dispatch(actionCreator(addCash, 5))}
       />
       <div style={{ fontSize: "20px" }}>{caash}</div>
     </header>

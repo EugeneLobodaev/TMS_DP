@@ -1,15 +1,16 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import style from "./PokemonsList.module.scss";
+import css from "./Main.module.css";
 import { actionFetchPokemonList } from "../../redux/reducers/pokemonList/pokemonListActions";
 import { RootState } from "../../redux/store";
 import { PokemonCard } from "../../components/pokemonCard/PokemonCard";
+import { getPokemonList } from "../../redux/thunks/getPokemonListThunk";
 
 interface Props {
   className?: string;
 }
 
-const PokemonsList: React.FC<Props> = ({ className }) => {
+export const Main: React.FC<Props> = ({ className }) => {
   const dispatch = useDispatch();
   const pokemonsList = useSelector(
     (state: RootState) => state.pokemonsListReducer.pokemonsList
@@ -20,45 +21,28 @@ const PokemonsList: React.FC<Props> = ({ className }) => {
   const pokemonsListError = useSelector(
     (state: RootState) => state.pokemonsListReducer.pokemonsListError
   );
-  const pokemonsListRequest = useSelector(
-    (state: RootState) => state.pokemonsListReducer.pokemonsListRequestResult
-  );
 
   React.useEffect(() => {
-    dispatch(actionFetchPokemonList());
-  }, [dispatch]);
+    dispatch(getPokemonList());
+  });
 
   if (!pokemonsList.length && pokemonsListIsLoading) {
     return <div>Список загружается</div>;
   }
 
   if (pokemonsListError) {
-    return <div>ошибка загрузки списка, перезагрузите страницу</div>;
+    return <div>ошибка загрузки списка</div>;
   }
 
   return (
-    <div className={cn(style.root, className)}>
-      <h1>Самый полный список покемонов</h1>
-      <h3>Самый полный список покемонов специально для mobalytics</h3>
-      <AsinEntitiesListFunctional
-        {...{
-          nextPage: pokemonsListRequest?.next,
-          nextPageAction: () =>
-            dispatch(
-              actionFetchPokemonList({ url: pokemonsListRequest?.next || null })
-            ),
-          isLoading: pokemonsListIsLoading,
-          scrollContainer: document.body,
-        }}
-      >
-        <div className={style.list}>
-          {pokemonsList.map((item: { id: any }) => (
-            <PokemonCard data={item} key={item.id} />
+    <div className={css.list}>
+      <h1>Список Покемонов</h1>
+        <div className={css.list}>
+          {pokemonsList.map((item) => (
+            <PokemonCard data={item} key={item.id} name={""} sprites={undefined} />
           ))}
         </div>
-      </AsinEntitiesListFunctional>
     </div>
   );
 };
 
-export default PokemonsList;
