@@ -33,3 +33,41 @@ export {
   actionFetchPokemonsListError,
   actionSetPokemonsListRequestResult,
 };
+
+
+// // actions.ts
+// import { ThunkAction } from 'redux-thunk';
+// import { RootState } from './store';
+// import { FETCH_DATA_REQUEST, FETCH_DATA_SUCCESS, FETCH_DATA_FAILURE, DataActionTypes } from './types';
+
+// export const fetchDataRequest = (): DataActionTypes => ({
+//   type: FETCH_DATA_REQUEST,
+// });
+
+// export const fetchDataSuccess = (data: any): DataActionTypes => ({
+//   type: FETCH_DATA_SUCCESS,
+//   payload: data,
+// });
+
+// export const fetchDataFailure = (error: string): DataActionTypes => ({
+//   type: FETCH_DATA_FAILURE,
+//   payload: error,
+// });
+
+// export const fetchData = (): ThunkAction<void, RootState, unknown, DataActionTypes> => {
+//   return async (dispatch) => {
+//     dispatch(fetchDataRequest());
+
+//     try {
+//       const response = await fetch('https://api.example.com/data');
+//       if (!response.ok) {
+//         throw new Error(`HTTP error! Status: ${response.status}`);
+//       }
+
+//       const data = await response.json();
+//       dispatch(fetchDataSuccess(data));
+//     } catch (error) {
+//       dispatch(fetchDataFailure(error.message));
+//     }
+//   };
+// };

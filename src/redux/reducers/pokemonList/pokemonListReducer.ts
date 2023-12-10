@@ -11,14 +11,14 @@ import {
   ReduxAction,
 } from "../../../types/itemList";
 
-export interface PokemonListReducer {
-  pokemonsList:PokemonProfileItem[];
+export interface IPokemonListReducer {
+  pokemonsList: PokemonProfileItem[];
   pokemonsListRequestResult?: PokemonListResult;
   pokemonsListLoading: boolean;
   pokemonsListError: string | null;
 }
 
-const initialState: PokemonListReducer = {
+const initialState: IPokemonListReducer = {
   pokemonsList: [],
   pokemonsListRequestResult: undefined,
   pokemonsListLoading: false,
@@ -26,6 +26,7 @@ const initialState: PokemonListReducer = {
 };
 
 export function pokemonListReducer(state = initialState, action: ReduxAction) {
+  console.log(state);
   switch (action.type) {
     case ACTION_NAME_FETCH_LIST:
       return {
