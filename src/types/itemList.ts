@@ -47,3 +47,10 @@ interface TypesListItem {
   slot: number;
   type: PokemonCategoryItem;
 }
+
+export interface IPokemonListReducer {
+  pokemonsList: PokemonProfileItem[];
+  pokemonsListRequestResult?: PokemonListResult;
+  pokemonsListLoading: boolean;
+  pokemonsListError: unknown;
+}

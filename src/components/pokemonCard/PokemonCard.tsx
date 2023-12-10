@@ -16,7 +16,7 @@ export const PokemonCard = (data: CardData) => {
   //   dispatch(actionSetPokemonsProfile());
   // };
   return (
-    <div onClick={() => console.log('return card item')}>
+    <div onClick={() => console.log("return card item")}>
       <div className={css.img}>
         <img src={`${data.sprites.front_default}`} alt="#" />
       </div>

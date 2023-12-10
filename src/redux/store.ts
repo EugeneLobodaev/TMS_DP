@@ -1,7 +1,7 @@
 import { applyMiddleware, createStore } from "redux";
 import thunk from "redux-thunk";
 import { rootReducer } from "./rootReducer";
-import { IPokemonListReducer } from "./reducers/pokemonList/pokemonListReducer";
+import { IPokemonListReducer } from "../types/itemList";
 import { PokemonProfileReducer } from "./reducers/pokemonProfile/pokemonProfileReducer";
 
 export interface RootState {

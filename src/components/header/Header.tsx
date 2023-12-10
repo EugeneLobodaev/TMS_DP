@@ -43,7 +43,7 @@ export const Header = () => {
       <ButtonHeader
         name={"Button 5"}
         className={buttons_header.buttons_header}
-        onClick={{}}
+        onClick={() => console.log(5)}
       />
       <ButtonHeader
         name={"Button 6"}

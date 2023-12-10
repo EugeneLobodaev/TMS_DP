@@ -6,6 +6,7 @@ import { RootState } from "../../redux/store";
 import { PokemonCard } from "../../components/pokemonCard/PokemonCard";
 import { getPokemonList } from "../../redux/thunks/getPokemonListThunk";
 import { rootReducer } from "../../redux/rootReducer";
+import { PokemonProfileItem } from "../../types/itemList";
 
 interface Props {
   className?: string;
@@ -13,9 +14,10 @@ interface Props {
 
 export const Main: React.FC<Props> = () => {
   const dispatch = useDispatch();
-  // debugger;
+  const bankState = useSelector((state: any) => state.bankReducer);
+  // // debugger;
   const pokemonsList = useSelector(
-    (state: RootState) => state.pokemonsListReducer.pokemonsList
+    (state: any) => state.pokemonsListReducer.pokemonsList
   );
   const pokemonsListIsLoading = useSelector(
     (state: RootState) => state.pokemonsListReducer.pokemonsListLoading
@@ -24,31 +26,30 @@ export const Main: React.FC<Props> = () => {
     (state: RootState) => state.pokemonsListReducer.pokemonsListError
   );
   useEffect(() => {
-    //@ts-ignore
-    dispatch(getPokemonList());
+    getPokemonList();
   });
+  console.log(pokemonsList)
+  console.log()
+  if (!pokemonsList.length && pokemonsListIsLoading) {
+    return <div>Список загружается</div>;
+  }
 
-  // if (!pokemonsList.length && pokemonsListIsLoading) {
-  //   return <div>Список загружается</div>;
-  // }
-
-  // if (pokemonsListError) {
-  //   return <div>ошибка загрузки списка</div>;
-  // }
+  if (pokemonsListError) {
+    return <div>ошибка загрузки списка</div>;
+  }
   return (
-    <div>123</div>
-    // <div className={css.list}>
-    //   <h1>Список Покемонов</h1>
-    //   <div className={css.list}>
-    //     {pokemonsList.map((item) => (
-    //       <PokemonCard
-    //         data={item}
-    //         key={item.id}
-    //         name={""}
-    //         sprites={undefined}
-    //       />
-    //     ))}
-    //   </div>
-    // </div>
+    <div className={css.list}>
+      <h1>Список Покемонов</h1>
+      <div className={css.list}>
+        {pokemonsList.map((item: PokemonProfileItem) => (
+          <PokemonCard
+            data={item}
+            key={item.id}
+            name={""}
+            sprites={undefined}
+          />
+        ))}
+      </div>
+    </div>
   );
 };

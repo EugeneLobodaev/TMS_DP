@@ -17,10 +17,10 @@ const initialState: PokemonProfileReducer = {
   pokemonsProfileError: null,
 };
 
-export function pokemonProfileReducer(
+export const pokemonProfileReducer = (
   state = initialState,
   action: ReduxAction
-) {
+) => {
   switch (action.type) {
     case ACTION_NAME_FETCH_PROFILE:
       return {
@@ -43,4 +43,4 @@ export function pokemonProfileReducer(
     default:
       return state;
   }
-}
+};

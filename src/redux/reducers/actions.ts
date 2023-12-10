@@ -1,5 +1,5 @@
-import { actionCreator } from "../../helpers/actionCreator";
-import { PokemonListResult, ReduxAction } from "../../../types/itemList";
+import { actionCreator } from "../helpers/actionCreator";
+import { IPokemonListReducer, ReduxAction } from "../../types/itemList";
 
 export const ACTION_NAME_FETCH_LIST = "FETCH_LIST";
 export const ACTION_NAME_SET_LIST = "SET_LIST";
@@ -14,11 +14,12 @@ export interface fetchPokemonsListAction extends ReduxAction {
   payload: fetchListPayload;
 }
 
-export const actionFetchPokemonList = (params?: fetchListPayload) =>
+export const actionFetchPokemonList = (params?: IPokemonListReducer) =>
   actionCreator(ACTION_NAME_FETCH_LIST, params);
-export const actionSetPokemonsList = (params: PokemonListResult) =>
+export const actionSetPokemonsList = (params: IPokemonListReducer) =>
   actionCreator(ACTION_NAME_SET_LIST, params);
-export const actionFetchPokemonsListError = (params: any) =>
+export const actionFetchPokemonsListError = (params: IPokemonListReducer) =>
   actionCreator(ACTION_NAME_FETCH_LIST_ERROR, params);
-export const actionSetPokemonsListRequestResult = (params: PokemonListResult) =>
-  actionCreator(ACTION_NAME_SET_LIST_REQUEST_RESULT, params);
+export const actionSetPokemonsListRequestResult = (
+  params: IPokemonListReducer
+) => actionCreator(ACTION_NAME_SET_LIST_REQUEST_RESULT, params);

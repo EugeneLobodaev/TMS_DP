@@ -4,19 +4,7 @@ import {
   ACTION_NAME_FETCH_LIST_ERROR,
   ACTION_NAME_SET_LIST_REQUEST_RESULT,
 } from "./pokemonListActions";
-import {
-  PokemonCategoryItem,
-  PokemonListResult,
-  PokemonProfileItem,
-  ReduxAction,
-} from "../../../types/itemList";
-
-export interface IPokemonListReducer {
-  pokemonsList: PokemonProfileItem[];
-  pokemonsListRequestResult?: PokemonListResult;
-  pokemonsListLoading: boolean;
-  pokemonsListError: string | null;
-}
+import { IPokemonListReducer, ReduxAction } from "../../../types/itemList";
 
 const initialState: IPokemonListReducer = {
   pokemonsList: [],
@@ -25,8 +13,7 @@ const initialState: IPokemonListReducer = {
   pokemonsListError: null,
 };
 
-export function pokemonListReducer(state = initialState, action: ReduxAction) {
-  console.log(state);
+export function pokemonsListReducer(state = initialState, action: ReduxAction) {
   switch (action.type) {
     case ACTION_NAME_FETCH_LIST:
       return {
