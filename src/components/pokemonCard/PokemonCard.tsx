@@ -1,26 +1,25 @@
-import React from "react";
 import css from "./PokemonCard.module.css";
 import { PokemonProfileItem } from "../../types/itemList";
 import { useDispatch } from "react-redux";
-import { actionSetPokemonsProfile } from "../../redux/reducers/pokemonProfile/pokemonProfileActions";
+import { getPokemonProfile } from "../../redux/thunks/getPokemonProfileThunk";
+import { NavLink } from "react-router-dom";
 
-interface CardData {
-  name: string;
-  sprites: any;
-  data: PokemonProfileItem;
-}
-
-export const PokemonCard = (data: CardData) => {
+export const PokemonCard = (data: PokemonProfileItem) => {
   const dispatch = useDispatch();
-  // const goToProfile = (): void => {
-  //   dispatch(actionSetPokemonsProfile());
-  // };
+
   return (
-    <div onClick={() => console.log("return card item")}>
-      <div className={css.img}>
-        <img src={`${data.sprites.front_default}`} alt="#" />
+    <NavLink to={`${data.id}`}>
+      <div
+        onClick={() => dispatch(getPokemonProfile(data.id))}
+        className={css.root}
+      >
+        <div className={css.img}>
+          <img src={`${data.sprites.front_default}`} alt="#" />
+        </div>
+        <div className={css.label}>{`${data.name
+          .charAt(0)
+          .toUpperCase()}${data.name.slice(1)}`}</div>
       </div>
-      <div className={css.label}>{`${data.name}`}</div>
-    </div>
+    </NavLink>
   );
 };

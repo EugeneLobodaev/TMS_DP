@@ -1,4 +1,3 @@
-import React from "react";
 import { buttonsProps } from "../../../types/buttons";
 
 export const ButtonHeader = (props: buttonsProps) => {

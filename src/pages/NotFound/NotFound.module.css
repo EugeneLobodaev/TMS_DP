@@ -1,0 +1,21 @@
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.text {
+    text-align: center;
+    margin-top: 300px;
+    font-size: 70px;
+    border: 0px;
+    background-color: transparent;
+    border-radius: 20px;
+    padding: 20px
+}
+
+.text:hover {
+    cursor: pointer;
+    background-color: rgb(228, 228, 65);
+    transition: 200ms;
+}

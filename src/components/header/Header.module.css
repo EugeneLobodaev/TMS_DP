@@ -1,6 +1,17 @@
 .header {
+    height: 75px;
+    position: fixed;
     display: flex;
+    top: 0%;
+    width: 100%;
     align-items: center;
-    justify-content: space-around;
-    background-color: grey;
+    justify-content: space-evenly;
+    background-color: rgb(228, 228, 65);
+    border-bottom: 1px solid black;
+}
+
+.text {
+    font-size: 40px;
+    text-decoration: none;
+    color: black;
 }

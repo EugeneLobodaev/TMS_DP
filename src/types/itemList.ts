@@ -28,7 +28,7 @@ export interface PokemonProfileItem {
   name: string;
   height: number;
   weight: number;
-  sprites: SpriteList;
+  sprites: any;
   stats: StatsListItem[];
   types: TypesListItem[];
 }
