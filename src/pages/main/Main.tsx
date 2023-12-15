@@ -11,7 +11,6 @@ interface Props {
 }
 
 export const Main: React.FC<Props> = () => {
-  const dispatch = useDispatch();
   const pokemonsList = useSelector(
     (state: any) => state.pokemonsListReducer.pokemonsList
   );
@@ -21,11 +20,9 @@ export const Main: React.FC<Props> = () => {
   const pokemonsListError = useSelector(
     (state: RootState) => state.pokemonsListReducer.pokemonsListError
   );
-  useEffect(() => {
-    dispatch(getPokemonList());
-  }, []);
-  if (pokemonsList.length < 1 && pokemonsListIsLoading) {
-    return <h2>Список загружается</h2>;
+
+  if (!pokemonsList.length && pokemonsListIsLoading) {
+    return <h2 className={css.container_text}>Список загружается</h2>;
   }
 
   if (pokemonsListError) {

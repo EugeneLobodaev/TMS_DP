@@ -9,43 +9,10 @@ export const PokemonProfile = () => {
   const profile: PokemonProfileItem | undefined = useSelector(
     (state: RootState) => state.pokemonProfileReducer.pokemonProfile
   );
-
-  const getStat = (
-    path: (string | number)[],
-    label: string,
-    index?: number
-  ) => {
-    return (
-      <div className={css.stat}>
-        <span className={css.statLabel}>{profile?.name}</span>
-      </div>
-    );
-  };
-
-  const getTypes = () => {
-    const typesList = profile?.types.map((item) => item.type.name).join(", ");
-    return (
-      <div className={css.stat}>
-        <span className={css.statLabel}>Тип: </span>
-        <span>{typesList}</span>
-      </div>
-    );
-  };
-
-  const getMainStats = () => {
-    return profile?.stats.map((item, index) => {
-      const name = profile?.stats[index].stat.name;
-      return getStat(
-        ["stats", index, "base_stat"],
-        name[0].toUpperCase() + name?.slice(1),
-        index
-      );
-    });
-  };
   return (
     <div className={css.root}>
       <div className={css.profile}>
-        <div className={css.name}>{profile?.name}</div>
+        <h1 className={css.name}>{profile?.name}</h1>
         <div className={css.profileContent}>
           <div className={css.imgWrap}>
             <img
@@ -55,23 +22,34 @@ export const PokemonProfile = () => {
             />
           </div>
           <div className={css.stats}>
-            <div>Параметры {profile?.name}</div>
+            <h2>Параметры {profile?.name}</h2>
             <span>Вес: {profile?.weight}</span>
             <span>Рост: {profile?.height}</span>
-            {getTypes()}
-            {getMainStats()}
-            
+            <span>
+              {profile?.stats[1].stat.name}: {profile?.stats[1].base_stat}
+            </span>
+            <span>
+              {profile?.stats[2].stat.name}: {profile?.stats[2].base_stat}
+            </span>
+            <span>
+              {profile?.stats[3].stat.name}: {profile?.stats[3].base_stat}
+            </span>
+            <span>
+              {profile?.stats[4].stat.name}: {profile?.stats[4].base_stat}
+            </span>
+            <span>
+              {profile?.stats[5].stat.name}: {profile?.stats[5].base_stat}
+            </span>
           </div>
           <NavLink to={"Pokemons"} className={css.text}>
-        <ButtonHeader
-          name={"Назад"}
-          className={css.button}
-          onClick={undefined}
-        />
-      </NavLink>
+            <ButtonHeader
+              name={"Назад"}
+              className={css.button}
+              onClick={undefined}
+            />
+          </NavLink>
         </div>
       </div>
-
     </div>
   );
 };
